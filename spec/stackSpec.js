@@ -21,12 +21,28 @@ describe("stack", function() {
     expect(stack.size).to.be.a('function');
   });
 
+  it('an empty stack should have size zero', function() {
+    expect(stack.size()).to.equal(0);
+  });
+
+
+  it('pushing a value should increment size by one', function() {
+    stack.push("test");
+    expect(stack.size()).to.equal(1);
+  });
+
   it('should add pushed items to the top of the stack', function() {
     // Fill out the body of the test here
+    stack.push("test");
+    expect(stack.pop()).to.equal("test");
   });
 
   it('should remove popped items from the top of the stack', function() {
-    // Fill out the body of the test here
+    stack.push("test2");
+    var size = stack.size();
+    expect(stack.size()).to.equal(1);
+    expect(stack.pop()).to.equal("test2");
+    expect(stack.size()).to.equal(0);
   });
 
   it('should push and pop multiple items in the right order (LIFO)', function() {
